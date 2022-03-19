@@ -6,6 +6,25 @@ using System.Threading.Tasks;
 
 namespace KPL_1302201138_MOD4_JURNAL_GGR
 {
+  
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            // nim = "1302201138";
+            Penjumlahan<int> penjumlahan = new Penjumlahan<int>();
+            penjumlahan.JumlahTigaAngka(13,02,20);
+          
+            SimpleDataBase<int> data = new SimpleDataBase<int>();
+            data.addNewData(13);
+            data.addNewData(02);
+            data.addNewData(20);
+
+            data.printAllData();
+        }
+    }
+}
+
     public class Penjumlahan<T>
     {
         public void JumlahTigaAngka(T satu, T dua, T tiga)
@@ -17,15 +36,26 @@ namespace KPL_1302201138_MOD4_JURNAL_GGR
         }
     }
 
-internal class Program
-    {
-        static void Main(string[] args)
+    class SimpleDataBase<T>
+    { 
+        public SimpleDataBase<T>
         {
-            // nim = "1302201138";
-            Penjumlahan<int> penjumlahan = new Penjumlahan<int>();
+            List<T> storedData;
+            List<DateTime> inputDates;    
 
+            public void addNewData(T data)
+            {
+                storedData.Add(data);
+                inputDates.Add(DateTime.Now);
+            }
 
-            penjumlahan.JumlahTigaAngka(13,02,20);
+            public void printAllData()
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    Console.WriteLine("Data "+ i+ "berisi: "+ storedData[i]+ "yang disimpan pada waktu "+ inputDates[i]);
+                }
+            }
         }
     }
-}
+
